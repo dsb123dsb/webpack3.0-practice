@@ -1,6 +1,8 @@
 import _ from "lodash";
 import './css/demo.css';
 
+var moment = require('moment');  // 常用时间格式化库
+console.log(moment().format());
 
 function componennt(){
 	var element = document.createElement('div');

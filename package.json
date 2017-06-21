@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/dsb123dsb/webpack3.0-practice#readme",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1"
   },
   "devDependencies": {
     "css-loader": "^0.28.4",
