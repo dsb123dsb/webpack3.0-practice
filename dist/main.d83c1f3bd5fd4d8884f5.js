@@ -1,4 +1,4 @@
-webpackJsonp([0],{
+webpackJsonp([1],{
 
 /***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -13,7 +13,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var moment = __webpack_require__(0);  // 常用时间格式化库
-console.log(moment().format());
+console.log(moment().format())
 
 function componennt(){
 	var element = document.createElement('div');

@@ -32,7 +32,11 @@ module.exports = function(env){
                    		// 该配置假定你引入的 vendor 存在于 node_modules 目录中
                    		return module.context && module.context.indexOf('node_modules') !== -1;
                 	}
-				})
+				}),
+				//CommonChunksPlugin will now extract all the common modules from vendor and main bundles
+	            new webpack.optimize.CommonsChunkPlugin({ // 不使用manifest.js，若应用代码改变，vender.js的hsah置也会改变
+	                name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+	            })
 			]
 		};
 };
