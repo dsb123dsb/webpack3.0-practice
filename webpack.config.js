@@ -1,11 +1,13 @@
 const path  =require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // 分离css代码插件
+const webpack = require('webpack');
 
 module.exports = function(env){
 	return {
 			entry: {// 多入口，分离第三方库js文件
-				main: './app/index.js',
-				vender: 'moment'
+				main: './app/index.js'
+				// 隐式公共 vendor chunk
+				// vendor: 'moment'
 			},
 			output: {
 				filename: '[name].[chunkhash].js', // 对应多个入口文件
@@ -23,6 +25,14 @@ module.exports = function(env){
 			},
 			plugins: [
 				new ExtractTextPlugin('style.css'),
+				new webpack.optimize.CommonsChunkPlugin({ // 不使用此插件，虽然分离出两个js文件，但是两份js文件都存在公共库，
+					name: 'vendor', // 指定公共bundle的名字
+					// 隐式公共 vendor chunk
+				 	minChunks: function (module) {
+                   		// 该配置假定你引入的 vendor 存在于 node_modules 目录中
+                   		return module.context && module.context.indexOf('node_modules') !== -1;
+                	}
+				})
 			]
 		};
 };
