@@ -1,4 +1,6 @@
 import _ from "lodash";
+import './css/demo.css';
+
 
 function componennt(){
 	var element = document.createElement('div');
