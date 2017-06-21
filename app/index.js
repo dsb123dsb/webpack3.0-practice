@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 function componennt(){
 	var element = document.createElement('div');
 
