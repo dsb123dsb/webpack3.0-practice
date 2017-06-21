@@ -1,8 +1,10 @@
 const path  =require('path');
+const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // 分离css代码插件
 const webpack = require('webpack');
 
 module.exports = function(env){
+	let babelConf = JSON.parse(fs.readFileSync('.babelrc'));
 	return {
 			entry: {// 多入口，分离第三方库js文件
 				main: './app/index.js'
@@ -14,14 +16,24 @@ module.exports = function(env){
 				path: path.resolve(__dirname, 'dist')
 			},
 			module: {
-				rules: [{
+				rules: [
+				{
 					test: /\.css$/,
 					// 转化为style标签，并且在js加载后注入页面
 					// use: ['style-loader', 'css-loader']
 					use: ExtractTextPlugin.extract({ // 打包时分离css代码
 						use: 'css-loader'
 					})
-				}]
+				},
+				{
+					test: /\.js$/,
+					exclude: /(node_modules)/,
+					use: [{
+						loader: 'babel-loader',
+						options: babelConf
+					}]
+				}
+				]
 			},
 			plugins: [
 				new ExtractTextPlugin('style.css'),
