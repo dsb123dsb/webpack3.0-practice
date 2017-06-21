@@ -12,7 +12,9 @@ module.exports = function(env){
 				// vendor: 'moment'
 			},
 			output: {
-				filename: '[name].[chunkhash].js', // 对应多个入口文件
+				// filename: '[name].[chunkhash].js', // 对应多个入口文件, 生产环境
+				filename: '[name].js',   // 开发环境
+				publicPath: '/static/js',
 				path: path.resolve(__dirname, 'dist')
 			},
 			module: {
