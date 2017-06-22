@@ -1,3 +1,8 @@
 div{
+	width: 150px;
+/*	height: 20px;*/
 	color: red;
+	background-image: url('../img/111.png'); 
+	background-repeat:no-repeat;
+	background-size: 20px 20px;
 }

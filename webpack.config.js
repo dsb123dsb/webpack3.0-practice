@@ -14,7 +14,7 @@ module.exports = function(env){
 			output: {
 				// filename: '[name].[chunkhash].js', // 对应多个入口文件, 生产环境
 				filename: '[name].js',   // 开发环境
-				publicPath: '/static/js',
+				publicPath: '/static/js/',
 				path: path.resolve(__dirname, 'dist')
 			},
 			module: {
@@ -34,6 +34,12 @@ module.exports = function(env){
 						loader: 'babel-loader',
 						options: babelConf
 					}]
+				},
+				{	// 图片会被处理，以及添加到 output 目录中, 引用图片路径替换为 output 目录中图片的最终路径
+					test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
+					use: [
+						'file-loader'
+					]
 				}
 				]
 			},

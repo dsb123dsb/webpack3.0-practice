@@ -1,5 +1,6 @@
 import _ from "lodash";
 import './css/demo.css';
+// import Image from './img/111.png';
 
 var moment = require('moment');  // 常用时间格式化库
 console.log(moment().format())
